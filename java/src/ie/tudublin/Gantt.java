@@ -30,21 +30,6 @@ public class Gantt extends PApplet {
         tasks.forEach(System.out::println);
     }
 
-    
-    //draw the graph
-    private void displayGraph() {
-        stroke(255);
-
-        for (int i = 1; i <= 30; i++) {
-            float position = map(i, 1, 30, Graph, width - GraphSize);
-
-            line(position, GraphSize, position, height - GraphSize);
-            fill(255);
-            text(i, position - 2, GraphSize / 2);
-        }
-    }
-
-
 
     public void mousePressed()
 	{
@@ -56,8 +41,21 @@ public class Gantt extends PApplet {
 		println("Mouse dragged");
 	}
 
-//display the list in the graph and the color for each task in the list
+
     public void displayTasks() {
+
+        //draw the graph
+        stroke(255);
+
+        for (int i = 1; i <= 30; i++) {
+            float position = map(i, 1, 30, Graph, width - GraphSize);
+
+            line(position, GraphSize, position, height - GraphSize);
+            fill(255);
+            text(i, position - 2, GraphSize / 2);
+        }
+
+//display the list in the graph and the color for each task in the list
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
 
@@ -85,7 +83,6 @@ public class Gantt extends PApplet {
 
         background(0);
         colorMode(HSB);
-        displayGraph();
         displayTasks();
         
     }
